@@ -1,0 +1,75 @@
+package default_package;
+
+import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
+import javax.media.opengl.GLEventListener;
+import javax.media.opengl.awt.GLCanvas;
+import javax.swing.JFrame;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.awt.SWT_AWT;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
+public class SWTOpenGLExample {
+    public static void main(String[] args) {
+        Display display = new Display();
+        Shell shell = new Shell(display);
+        shell.setLayout(new FillLayout());
+        shell.setSize(800, 600);
+
+        Composite composite = new Composite(shell, SWT.EMBEDDED | SWT.NO_BACKGROUND);
+        Frame frame = SWT_AWT.new_Frame(composite);
+
+        GLCapabilities caps = new GLCapabilities(null);
+        GLCanvas canvas = new GLCanvas(caps);
+        canvas.addGLEventListener(new GLEventListener() {
+            @Override
+            public void display(GLAutoDrawable drawable) {
+                GL2 gl = drawable.getGL().getGL2();
+                gl.glClear(GL.GL_COLOR_BUFFER_BIT);
+                // Aquí puedes dibujar tus gráficos OpenGL
+                gl.glBegin(GL.GL_LINE_LOOP);
+                gl.glVertex2f(-0.5f, -0.5f);
+                gl.glVertex2f(0.5f, -0.5f);
+                gl.glVertex2f(0.5f, 0.5f);
+                gl.glVertex2f(-0.5f, 0.5f);
+                gl.glEnd();
+                gl.glFlush();
+            }
+
+            @Override
+            public void dispose(GLAutoDrawable drawable) {
+            }
+
+            @Override
+            public void init(GLAutoDrawable drawable) {
+            }
+
+            @Override
+            public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+                GL2 gl = drawable.getGL().getGL2();
+                gl.glMatrixMode(GL2.GL_PROJECTION);
+                gl.glLoadIdentity();
+                gl.glOrtho(-1, 1, -1, 1, -1, 1);
+                gl.glMatrixMode(GL2.GL_MODELVIEW);
+                gl.glLoadIdentity();
+            }
+        });
+
+        frame.add(canvas);
+        composite.pack();
+        shell.open();
+
+        while (!shell.isDisposed()) {
+            if (!display.readAndDispatch()) {
+                display.sleep();
+            }
+        }
+
+        display.dispose();
+    }
+}
+

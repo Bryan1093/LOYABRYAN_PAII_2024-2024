@@ -1,0 +1,88 @@
+package default_package;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Renderer_Figuras extends JFrame {
+    private enum Shape {TRIANGLE, SQUARE, CIRCLE}
+    private Shape currentShape = Shape.TRIANGLE;
+
+    public Renderer_Figuras() {
+        setTitle("Dibujar Figuras");
+        setSize(400, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // Crear botones
+        JButton triangleButton = new JButton("Triángulo");
+        JButton squareButton = new JButton("Cuadrado");
+        JButton circleButton = new JButton("Círculo");
+
+        // Agregar ActionListener a cada botón
+        triangleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = Shape.TRIANGLE;
+                repaint(); // Volver a dibujar la ventana
+            }
+        });
+
+        squareButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = Shape.SQUARE;
+                repaint(); // Volver a dibujar la ventana
+            }
+        });
+
+        circleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = Shape.CIRCLE;
+                repaint(); // Volver a dibujar la ventana
+            }
+        });
+
+        // Crear un panel para los botones
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(triangleButton);
+        buttonPanel.add(squareButton);
+        buttonPanel.add(circleButton);
+
+        // Agregar el panel de botones al contenedor principal
+        getContentPane().add(buttonPanel, BorderLayout.NORTH);
+
+        setVisible(true);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        // Dibujar la forma seleccionada
+        switch (currentShape) {
+            case TRIANGLE:
+                int[] xPoints = {200, 250, 150};
+                int[] yPoints = {150, 280, 250};
+                
+                int nPoints = 3;
+                g2d.setColor(Color.RED);
+                g2d.fillPolygon(xPoints, yPoints, nPoints);
+                break;
+            case SQUARE:
+                g2d.setColor(Color.GREEN);
+                g2d.fillRect(150, 100, 100, 100);
+                break;
+            case CIRCLE:
+                g2d.setColor(Color.BLUE);
+                g2d.fillOval(180, 180, 130, 130);
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+        new Renderer_Figuras();
+    }
+}

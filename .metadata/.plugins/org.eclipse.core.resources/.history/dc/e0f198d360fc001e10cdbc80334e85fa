@@ -1,0 +1,35 @@
+package default_package;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Render extends JFrame {
+    public Render() {
+        setTitle("Dibujar Figuras");
+        setSize(400, 400);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        // Dibujar un triángulo
+        int[] xPoints = {200, 250, 150};
+        int[] yPoints = {150, 250, 250};
+        int nPoints = 3;
+        g2d.drawPolygon(xPoints, yPoints, nPoints);
+
+        // Dibujar un cuadrado
+        g2d.drawRect(150, 100, 100, 100);
+        
+        // Dibujar un circulo
+        g2d.drawOval(150, 150, 100, 100);
+    }
+
+    public static void main(String[] args) {
+        new Render();
+    }
+}
