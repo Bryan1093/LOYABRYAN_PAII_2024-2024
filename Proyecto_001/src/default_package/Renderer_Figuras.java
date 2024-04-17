@@ -1,3 +1,11 @@
+/**
+ * Programa para dibujar 3 figuras geométricas
+ * 
+ * @author Bryan Loya
+ * @version 1.0
+ * @since 2024-04-17
+ */
+
 package default_package;
 
 import javax.swing.*;
