@@ -5,3 +5,35 @@
 1713319104376	Delete element
 1713319214870	Delete element
 1713320446994	Rename type 'Render'
+1713542502233	Delete element
+1713542525281	Delete element
+1713542555120	Delete element
+1713542566294	Delete element
+1713542605124	Delete element
+1713542651527	Delete element
+1713543242457	Delete element
+1713543398579	Delete element
+1713543454859	Move folder
+1713543460802	Move file
+1713543472447	Move compilation unit
+1713543491557	Delete elements
+1713543717139	Rename type 'Circulo'
+1713543729337	Rename type 'Triangulo'
+1713543740774	Rename type 'Cuadrado'
+1713546820118	Delete element
+1713550422054	Rename local variable 'gl'
+1713550444360	Rename field 'triangulo'
+1713550453872	Rename field 'cuadrado'
+1713550465628	Rename field 'circulo'
+1713553266001	Rename type 'Main'
+1713554071256	Rename field 'dibujarTriangulo'
+1713556970365	Rename local variable 'buttonPanel'
+1713557032271	Rename local variable 'triangleButton'
+1713557043107	Rename local variable 'BotódeTriangle'
+1713557143494	Rename local variable 'circleButton'
+1713557843271	Rename method 'dibujarCuadrado'
+1713557929472	Rename field 'dibujarCuadrado'
+1713557977917	Rename method 'dibujarCirculo'
+1713558156718	Rename field 'dibujarCirculo'
+1713558173297	Rename field 'dibujarTriangle'
+1713558473637	Rename local variable 'numSegments'

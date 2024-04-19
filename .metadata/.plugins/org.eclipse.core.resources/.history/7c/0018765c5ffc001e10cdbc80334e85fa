@@ -1,8 +1,0 @@
-package default_package;
-
-import java.awt.*;
-import javax.swing.*;
-
-public class Render {
-
-}

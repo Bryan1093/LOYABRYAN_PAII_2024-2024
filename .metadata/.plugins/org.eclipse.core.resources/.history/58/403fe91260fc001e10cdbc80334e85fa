@@ -1,7 +1,0 @@
-package default_package;
-
-import java.awt.*;
-
-public class Render {
-
-}

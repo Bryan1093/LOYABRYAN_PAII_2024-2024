@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.awt.Graphics2D"/>
+    <fullyQualifiedTypeName name="default_package.Render"/>
+    <fullyQualifiedTypeName name="com.jogamp.opengl.awt.AWTGLAutoDrawable"/>
+    <fullyQualifiedTypeName name="prueba.Triangle"/>
+    <fullyQualifiedTypeName name="prueba.Cercle"/>
+    <fullyQualifiedTypeName name="prueba.Quadrat"/>
+    <fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
+</qualifiedTypeNameHistroy>
