@@ -1,12 +1,12 @@
 package Principal;
 
 import Figuras.Figuras;
-import Figuras.Triangulo;
+import Figuras.Triangle;
 
 import java.util.Scanner;
 
-import Figuras.Circulo;
-import Figuras.Cuadrado;
+import Figuras.Cercle;
+import Figuras.Quadrat;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,35 +16,35 @@ public class Main {
 
         while (continuar) {
             System.out.println("Seleccione la figura que desea dibujar:");
-            System.out.println("1. Circulo");
-            System.out.println("2. Cuadrado");
-            System.out.println("3. Triangulo");
-            System.out.println("0. Salir");
+            System.out.println("1. Cercle");
+            System.out.println("2. Quadrat");
+            System.out.println("3. Triangle");
+            System.out.println("0. Sortir");
 
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
             switch (opcion) {
                 case 1:
-                	Figuras figC = new Figuras(new Circulo());
+                	Figuras figC = new Figuras(new Cercle());
                     break;
                 case 2:
-                	Figuras figCu = new Figuras(new Cuadrado());
+                	Figuras figCu = new Figuras(new Quadrat());
                     break;
                 case 3:
-                	Figuras figTr = new Figuras(new Triangulo());
+                	Figuras figTr = new Figuras(new Triangle());
                     break;
                 case 0:
                     continuar = false;
                     break;
                 default:
-                    System.out.println("Opción no válida");
+                    System.out.println("Opció no vàlida");
                     break;
             }
         }
 
         scanner.close();
-    	System.out.println("Hasta pronto!!");
+    	System.out.println("Fins aviat!!");
 
     }
 }

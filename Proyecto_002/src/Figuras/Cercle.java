@@ -2,11 +2,11 @@ package Figuras;
 
 import Interface.Interfaz;
 
-public class Circulo implements Interfaz{
+public class Cercle implements Interfaz{
 
 	@Override
 	public void figura() {
-		System.out.println("Se dibujo un Circulo");
+		System.out.println("Es va dibuixar un Cercle");
 		System.out.println("   ");
 	}
 }

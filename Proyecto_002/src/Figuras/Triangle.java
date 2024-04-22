@@ -2,11 +2,11 @@ package Figuras;
 
 import Interface.Interfaz;
 
-public class Cuadrado implements Interfaz{
+public class Triangle implements Interfaz{
 
 	@Override
 	public void figura() {
-		System.out.println("Se dibujo un Cuadrado");
+		System.out.println("Es va dibuixar un Triangle");
 		System.out.println("   ");
 	}	
 }
