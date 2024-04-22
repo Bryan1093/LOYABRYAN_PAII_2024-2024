@@ -7,4 +7,9 @@
     <fullyQualifiedTypeName name="prueba.Cercle"/>
     <fullyQualifiedTypeName name="prueba.Quadrat"/>
     <fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
+    <fullyQualifiedTypeName name="Figuras.Figuras"/>
+    <fullyQualifiedTypeName name="Figuras.Circulo"/>
+    <fullyQualifiedTypeName name="Interface.Interfaz"/>
+    <fullyQualifiedTypeName name="Figuras.Cuadrado"/>
+    <fullyQualifiedTypeName name="Figuras.Triangulo"/>
 </qualifiedTypeNameHistroy>
