@@ -12,4 +12,13 @@
     <fullyQualifiedTypeName name="Interface.Interfaz"/>
     <fullyQualifiedTypeName name="Figuras.Cuadrado"/>
     <fullyQualifiedTypeName name="Figuras.Triangulo"/>
+    <fullyQualifiedTypeName name="srt.naveEnemiga"/>
+    <fullyQualifiedTypeName name="Figuras.NaveAliada"/>
+    <fullyQualifiedTypeName name="java.net.InterfaceAddress"/>
+    <fullyQualifiedTypeName name="Interface.IDibujable"/>
+    <fullyQualifiedTypeName name="Figuras.NaveEnemiga"/>
+    <fullyQualifiedTypeName name="srt.NaveEnemiga"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
+    <fullyQualifiedTypeName name="srt.BalaEnemiga"/>
 </qualifiedTypeNameHistroy>
