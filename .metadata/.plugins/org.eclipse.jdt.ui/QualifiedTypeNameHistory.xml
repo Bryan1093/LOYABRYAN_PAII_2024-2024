@@ -21,4 +21,10 @@
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
     <fullyQualifiedTypeName name="srt.BalaEnemiga"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="Interface.IMover"/>
+    <fullyQualifiedTypeName name="Interface.IDisparar"/>
+    <fullyQualifiedTypeName name="Interface.IMorir"/>
+    <fullyQualifiedTypeName name="Figuras.BalaAliada"/>
+    <fullyQualifiedTypeName name="Figuras.BalaEnemiga"/>
 </qualifiedTypeNameHistroy>
