@@ -3,7 +3,7 @@
  * Versión: 1.0
  */
 
-package Figuras;
+package modelos;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -15,12 +15,14 @@ import javax.swing.Timer;
 
 import Interface.IDrawable;
 import Interface.IShoot;
+import controller.Contenedor;
 import Interface.IDead;
 import Interface.IMove;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
     private int x, y;                   // Posición de la nave enemiga en el eje x e y
@@ -31,7 +33,10 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
     private boolean shootingUp;         // Indica si la nave está disparando actualmente
     private ArrayList<EnemyBullet> bullets;
     private int speedY = 1;         // Velocidad vertical de la nave enemiga
+    private int speedX = 1;  
     private int movements = 0;        // Contador de movimientos
+    private boolean restadoVida;
+    private int direction = 1;
 
     public EnemyShip(int x, int y, int width, int high, Color color) {
         this.x = x;
@@ -40,7 +45,8 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
         this.high = high;
         this.color = color;
         shootingUp = false;
-        this.bullets = new ArrayList<>();
+        bullets = new ArrayList<>();
+        restadoVida = false;
 
         // Inicializar el temporizador para generar disparos automáticos
         this.timer = new Timer(delay, new ActionListener() {
@@ -49,7 +55,7 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
                 shoot();
             }
         });
-        this.timer.start(); // Iniciar el temporizador
+        timer.start(); // Iniciar el temporizador
     }
 
     @Override
@@ -62,8 +68,8 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
         g.fillPolygon(nave);
 
         // Dibujar las balas de la nave enemiga
-        for (EnemyBullet bala : bullets) {
-            bala.draw(g);
+        for (EnemyBullet bullet : bullets) {
+            bullet.draw(g);
         }
     }
 
@@ -74,13 +80,37 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
         if (movements % 2 == 0) { // Mover la nave cada 2 actualizaciones de movimiento
             y += speedY; // Mover la nave hacia abajo
         }
-
+        
         // Controlar el límite de la pantalla para reiniciar la posición de la nave
         if (y > 600) {
             y = 0;
             shootingUp = false; // Reiniciar el estado de disparo
         }
+        
+        x += speedX * direction; // Mover la nave en la dirección actual
+
+        // Cambiar la dirección si la nave llega a los límites de la pantalla
+        if (x <= 0 || x + width >= 800) {
+            direction *= -1; // Cambiar la dirección
+            y += 10; // Bajar la nave un poco al cambiar de dirección
+        }
+
+        // Mover las balas enemigas
+        for (EnemyBullet bullet : bullets) {
+            bullet.mover();
+        }
+
+        // Eliminar balas que salieron de la pantalla
+        Iterator<EnemyBullet> iter = bullets.iterator();
+        while (iter.hasNext()) {
+            EnemyBullet bullet = iter.next();
+            if (bullet.getY() > 600) {
+                iter.remove();
+            }
+        }
     }
+
+
 
     public boolean intersecta(AlliedBullet bala) {
         Rectangle rectNave = new Rectangle(x, y, width, high);
@@ -91,24 +121,40 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
     @Override
     public void dead() {
         // Reiniciar la posición de la nave enemiga
-        y = 0;  // Puedes establecer la posición y a la original o a la que prefieras
+        y = 0; 
         shootingUp = false; // Reiniciar el estado de disparo
-        Colisiones.eliminarNaveEnemiga(Game.getInstance().getNavesEnemigas(), this); // Eliminar la nave enemiga de la lista
-        if (Game.getInstance().getNavesEnemigas().length == 0 && Game.getInstance().getNavesEnemigasAbajo().length == 0) {
-            Game.getInstance().setWin(true); // Indicar que el jugador ha ganado
+        Colisiones.eliminarNaveEnemiga(Contenedor.getInstance().getNavesEnemigas(), this); // Eliminar la nave enemiga de la lista
+        if (Contenedor.getInstance().getNavesEnemigas().length == 0 && Contenedor.getInstance().getNavesEnemigasAbajo().length == 0) {
+            Contenedor.getInstance().setWin(true); // Indicar que el jugador ha ganado
         }
     }
 
 
-    public void shoot() {
-        // Calcular la posición de la bala enemiga
-        int xBala = this.getX() + this.getAncho() / 2;
-        int yBala = this.getY() + this.getAlto();
+    @Override
+    public EnemyBullet shoot() {
+    	// Calcular la posición de la bala enemiga
+        int xBullet = this.x + this.width / 2;
+        int yBullet = this.y + this.high;
 
-        // Crear una nueva bala enemiga y agregarla a la lista balasEnemigas
-        EnemyBullet bala = new EnemyBullet(xBala, yBala, 5, 10, Color.GREEN);
-        Game.getInstance().agregarBalaEnemiga(bala);
+        // Crear una nueva bala enemiga y agregarla a la lista de balas
+        EnemyBullet bullet = new EnemyBullet(xBullet, yBullet, 5, 10, Color.WHITE);
+        bullet.setSpeedY(-2); // Velocidad hacia abajo
+        bullets.add(bullet);
+		return bullet;
     }
+    
+    public void moveBullets() {
+        Iterator<EnemyBullet> iter = bullets.iterator();
+        while (iter.hasNext()) {
+            EnemyBullet bullet = iter.next();
+            bullet.mover(); // Movemos la bala
+            // Si la bala sale de la pantalla, la eliminamos
+            if (bullet.getY() > Contenedor.getInstance().getHeight()) {
+                iter.remove();
+            }
+        }
+    }
+
 
     public int getY() {
         return y;
@@ -136,5 +182,18 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
 
     public ArrayList<EnemyBullet> getBalas() {
         return bullets;
+    }
+    
+    // Getter and setter for restadoVida
+    public boolean isRestadoVida() {
+        return restadoVida;
+    }
+
+    public void setRestadoVida(boolean restadoVida) {
+        this.restadoVida = restadoVida;
+    }
+    
+    public void resetRestadoVida() {
+        this.restadoVida = false;
     }
 }

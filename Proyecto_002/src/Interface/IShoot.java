@@ -1,5 +1,7 @@
 package Interface;
 
+import modelos.EnemyBullet;
+
 public interface IShoot {
-    void shoot();
+    EnemyBullet shoot();
 }

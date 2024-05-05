@@ -3,7 +3,7 @@
  * Versión: 1.0
  */
 
-package Figuras;
+package modelos;
 
 import java.awt.Color;
 import java.awt.Graphics;

@@ -3,7 +3,7 @@
  * Versión: 1.0
  */
 
-package Figuras;
+package modelos;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,9 +14,10 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import Interface.IDrawable;
+import Interface.IMove;
 import Interface.IDead;
 
-public class AlliedShip implements IDrawable, IDead {
+public class AlliedShip implements IDrawable, IDead{
     private int x, y;                           // Posición de la nave enemiga en el eje x e y
     private int width, high;                    // Ancho y alto de la nave enemiga
     private Color color;                        // Color de la nave enemiga
@@ -24,6 +25,7 @@ public class AlliedShip implements IDrawable, IDead {
     private int moveAmount = 10;                // Cantidad de píxeles a mover en cada tecla presionada
     private JPanel panel;                       // Panel donde se dibuja la nave aliada
     private ArrayList<AlliedBullet> balas;        // Lista de balas disparadas por la nave aliada
+    private int xSpeed;        // Velocidad horizontal de la nave aliada
 
     /**
      * Constructor de la clase NaveAliada.
@@ -63,23 +65,52 @@ public class AlliedShip implements IDrawable, IDead {
             bala.draw(g);
         }
     }
+    
+    public void moveRight() {
+        naveX += moveAmount; // Incrementa la posición en X para mover la nave hacia la derecha
+        if (naveX + width / 2 > panel.getWidth()) { // Verifica que al menos la mitad de la nave esté dentro del panel
+            naveX = panel.getWidth() - width / 2;
+        }
+    }
+
+    public void moveLeft() {
+        naveX -= moveAmount; // Decrementa la posición en X para mover la nave hacia la izquierda
+        if (naveX < -width / 2) { // Verifica que al menos la mitad de la nave esté dentro del panel
+            naveX = -width / 2;
+        }
+    }
+    public void moveUp() {
+        naveY -= moveAmount; // Decrementa la posición en Y para mover la nave hacia arriba
+        if (naveY < 0) { // Verifica que la nave no se salga del panel por arriba
+            naveY = 0;
+        }
+    }
+
+    public void moveDown() {
+        naveY += moveAmount; // Incrementa la posición en Y para mover la nave hacia abajo
+        if (naveY + high > panel.getHeight()) { // Verifica que la nave no se salga del panel por abajo
+            naveY = panel.getHeight() - high;
+        }
+    }
+
 
     /**
      * Método para manejar el evento de tecla presionada.
      * @param e Evento de tecla.
      */
     public void keyPressed(KeyEvent e) {
+    	
+    	
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_LEFT) {
-            naveX -= moveAmount;
-            if (naveX < 0) {
-                naveX = 0;
-            }
+            moveLeft();
         } else if (key == KeyEvent.VK_RIGHT) {
-            naveX += moveAmount;
-            if (naveX + width > panel.getWidth()) {
-                naveX = panel.getWidth() - width;
-            }
+        	moveRight();
+        } else if (key == KeyEvent.VK_UP) {
+        	moveUp();
+        } else if (key == KeyEvent.VK_DOWN) {
+        	moveDown();
+        
         } else if (key == KeyEvent.VK_SPACE) {
             // Disparar una nueva bala
             AlliedBullet bala = new AlliedBullet(naveX + width / 2, naveY, 5, 10, Color.WHITE);
@@ -158,5 +189,8 @@ public class AlliedShip implements IDrawable, IDead {
                 i--; // Disminuir el índice para compensar la eliminación del elemento
             }
         }
+    }
+    public void setX(int newX) {
+        x = newX;
     }
 }

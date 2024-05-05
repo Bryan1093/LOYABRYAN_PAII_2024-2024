@@ -3,11 +3,11 @@
  * Versión: 1.0
  */
 
-package Principal;
+package JFrame;
 
 import javax.swing.JFrame;
 
-import Figuras.Game;
+import controller.Contenedor;
 
 /**
  * Clase principal que inicia la aplicación del juego Galaga chafa.
@@ -18,7 +18,7 @@ public class MainGalaga {
         JFrame ventana = new JFrame("Galaga chafa");
 
         // Crear un nuevo juego y añadirlo a la ventana
-        Game juego = new Game();
+        Contenedor juego = new Contenedor();
         ventana.add(juego);
 
         // Configurar el tamaño de la ventana

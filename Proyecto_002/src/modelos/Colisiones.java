@@ -3,7 +3,7 @@
  * Versión: 1.0
  */
 
-package Figuras;
+package modelos;
 
 import java.awt.Rectangle;
 
@@ -47,5 +47,20 @@ public class Colisiones {
                 break;
             }
         }
+    }
+    
+    /**
+     * Verifica si hay colisión entre una bala aliada y un arreglo de naves enemigas.
+     * @param balaAliada La bala aliada.
+     * @param navesEnemigas Arreglo de naves enemigas.
+     * @return true si hay colisión, false en caso contrario.
+     */
+    public static boolean colision(AlliedBullet balaAliada, EnemyShip[] navesEnemigas) {
+        for (EnemyShip naveEnemiga : navesEnemigas) {
+            if (naveEnemiga != null && colision(balaAliada, naveEnemiga)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

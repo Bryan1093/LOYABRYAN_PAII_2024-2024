@@ -27,4 +27,8 @@
     <fullyQualifiedTypeName name="Interface.IMorir"/>
     <fullyQualifiedTypeName name="Figuras.BalaAliada"/>
     <fullyQualifiedTypeName name="Figuras.BalaEnemiga"/>
+    <fullyQualifiedTypeName name="modelos.AlliedShip"/>
+    <fullyQualifiedTypeName name="Interface.IDrawable"/>
+    <fullyQualifiedTypeName name="Interface.IMove"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
