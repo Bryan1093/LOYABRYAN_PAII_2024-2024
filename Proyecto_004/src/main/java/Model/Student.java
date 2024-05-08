@@ -1,70 +1,79 @@
 package Model;
 
-	import jakarta.persistence.Column;
-	import jakarta.persistence.Entity;
-	import jakarta.persistence.Id;
-	import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="student")
 public class Student {
-	
-	@Id
-	private int id;
-	
-	@Column(name="name")
-	private String name;
+    
+    @Id
+    private long CI;
+    
+    @Column(name="id")
+    private int id;
+    
+    @Column(name="name")
+    private String name;
 
-	@Column(name="lastname")
-	private String lastname;
+    @Column(name="lastname")
+    private String lastname;
 
-	@Column(name="age")
-	private int age;
-	
-	public Student() {
-		
-	}
+    @Column(name="age")
+    private int age;
+    
+    public Student() {
+        
+    }
 
-	public Student(int id, String name, String lastname, int age) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.lastname = lastname;
-		this.age = age;
-	}
+    public Student(long CI, int id, String name, String lastname, int age) {
+        super();
+        this.CI = CI;
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public long getCI() {
+        return CI;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setCI(long CI) {
+        this.CI = CI;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getLastname() {
-		return lastname;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public String getLastname() {
+        return lastname;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-	
-	
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
