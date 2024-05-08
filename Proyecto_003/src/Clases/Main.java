@@ -21,16 +21,16 @@ public class Main {
 
 		StudentDAO studentDAO = new StudentDAOImp();
 		Student nuevoEstudiante = new Student();
-		int idEstudianteAEliminar = 2; // Id estudiante
+		int idEstudianteAEliminar = 4; // Id estudiante
 
 		// Para reiniciar la secuencia de la columna id: ALTER SEQUENCE student_id_seq RESTART WITH 1;
 
-		nuevoEstudiante.setName("Bryan");
+		nuevoEstudiante.setName("Paulino");
 		nuevoEstudiante.setLastname("Loya");
-		nuevoEstudiante.setAge(25); // Edad del estudiante
+		nuevoEstudiante.setAge(16); // Edad del estudiante
 
 		// Insertar estudiante
-		/*try {
+		try {
 			boolean creado = studentDAO.crear(nuevoEstudiante);
 			if (creado) {
 				System.out.println("Estudiante creado correctamente.");
@@ -39,7 +39,7 @@ public class Main {
 			}
 		} catch (SQLException e) {
 			System.out.println("Error al interactuar con la base de datos: " + e.getMessage());
-		}*/
+		}
 
 		// eliminar
 		/*try {

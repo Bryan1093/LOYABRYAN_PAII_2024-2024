@@ -31,4 +31,13 @@
     <fullyQualifiedTypeName name="Interface.IDrawable"/>
     <fullyQualifiedTypeName name="Interface.IMove"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="DAO.StudentDAOImp"/>
+    <fullyQualifiedTypeName name="DAO.StudentDAO"/>
+    <fullyQualifiedTypeName name="DAO.TeacherDAO"/>
+    <fullyQualifiedTypeName name="DAO.TeacherDAOImp"/>
+    <fullyQualifiedTypeName name="Clases.Teacher"/>
+    <fullyQualifiedTypeName name="DAO.SubjectsDAO"/>
+    <fullyQualifiedTypeName name="Model.Student"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
 </qualifiedTypeNameHistroy>
