@@ -17,6 +17,7 @@ public class BasebeansApplication {
 		 */
 
 		BeanFactory factoty = new ClassPathXmlApplicationContext("file:src/main/resources/beans.xml");
+		System.out.println("NOMBRES DE PERSONAS");
 		System.out.println(factoty.getBean("Mia"));
 		System.out.println(factoty.getBean("Lana"));
 		System.out.println(factoty.getBean("Swetie"));
