@@ -2,33 +2,38 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="Persona1" class="ec.uce.edu.basebeans.Person">
+    <bean id="Mia" class="ec.uce.edu.basebeans.Persona">
         <property name="id" value="1"/>
-        <property name="name" value="Perez"/>
-        <property name="age" value="20"/>
-    </bean>
-
-    <bean id="Persona2" class="ec.uce.edu.basebeans.Person">
-        <property name="id" value="2"/>
-        <property name="name" value="Gomez"/>
+        <property name="name" value="Mia"/>
+        <property name="lastname" value="Khalifa"/>
         <property name="age" value="30"/>
     </bean>
 
-    <bean id="Persona3" class="ec.uce.edu.basebeans.Person">
+    <bean id="Lana" class="ec.uce.edu.basebeans.Persona">
+        <property name="id" value="2"/>
+        <property name="name" value="Lana"/>
+        <property name="lastname" value="Rhoades"/>
+        <property name="age" value="30"/>
+    </bean>
+
+    <bean id="Swetie" class="ec.uce.edu.basebeans.Persona">
         <property name="id" value="3"/>
-        <property name="name" value="Lopez"/>
+        <property name="name" value="Swetie"/>
+        <property name="lastname" value="Fox"/>
         <property name="age" value="25"/>
     </bean>
 
-    <bean id="Persona4" class="ec.uce.edu.basebeans.Person">
+    <bean id="Sasha" class="ec.uce.edu.basebeans.Persona">
         <property name="id" value="4"/>
-        <property name="name" value="Martinez"/>
+        <property name="name" value="Sasha"/>
+        <property name="lastname" value="Grey"/>
         <property name="age" value="28"/>
     </bean>
 
-    <bean id="Persona5" class="ec.uce.edu.basebeans.Person">
+    <bean id="Florentine" class="ec.uce.edu.basebeans.Persona">
         <property name="id" value="5"/>
-        <property name="name" value="Rodriguez"/>
+        <property name="name" value="Florentine"/>
+        <property name="lastname" value="Lopez"/>
         <property name="age" value="22"/>
     </bean>
 

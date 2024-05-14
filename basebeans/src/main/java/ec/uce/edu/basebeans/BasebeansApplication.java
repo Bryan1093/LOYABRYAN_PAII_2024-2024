@@ -17,10 +17,10 @@ public class BasebeansApplication {
 		 */
 
 		BeanFactory factoty = new ClassPathXmlApplicationContext("file:src/main/resources/beans.xml");
-		System.out.println(factoty.getBean("Persona1"));
-		System.out.println(factoty.getBean("Persona2"));
-		System.out.println(factoty.getBean("Persona3"));
-		System.out.println(factoty.getBean("Persona4"));
-		System.out.println(factoty.getBean("Persona5"));
+		System.out.println(factoty.getBean("Mia"));
+		System.out.println(factoty.getBean("Lana"));
+		System.out.println(factoty.getBean("Swetie"));
+		System.out.println(factoty.getBean("Sasha"));
+		System.out.println(factoty.getBean("Florentine"));
 	}
 }

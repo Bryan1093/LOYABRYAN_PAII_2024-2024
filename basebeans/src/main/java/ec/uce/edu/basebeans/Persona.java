@@ -1,17 +1,19 @@
 package ec.uce.edu.basebeans;
 
-public class Person {
+public class Persona {
     private int id;
     private String name;
+    private String lastname;
     private int age;
 
-    public Person(int id, String name, int age) {
+    public Persona(int id, String name, String lastname, int age) {
         this.id = id;
         this.name = name;
+        this.lastname = lastname;
         this.age = age;
     }
 
-    public Person() {
+    public Persona() {
     }
 
     public int getId() {
@@ -38,11 +40,20 @@ public class Person {
         this.name = name;
     }
 
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", age=" + age +
                 '}';
     }
