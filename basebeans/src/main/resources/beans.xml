@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Persona1" class="ec.uce.edu.basebeans.Person">
+        <property name="id" value="1"/>
+        <property name="name" value="Perez"/>
+        <property name="age" value="20"/>
+    </bean>
+
+    <bean id="Persona2" class="ec.uce.edu.basebeans.Person">
+        <property name="id" value="2"/>
+        <property name="name" value="Gomez"/>
+        <property name="age" value="30"/>
+    </bean>
+
+    <bean id="Persona3" class="ec.uce.edu.basebeans.Person">
+        <property name="id" value="3"/>
+        <property name="name" value="Lopez"/>
+        <property name="age" value="25"/>
+    </bean>
+
+    <bean id="Persona4" class="ec.uce.edu.basebeans.Person">
+        <property name="id" value="4"/>
+        <property name="name" value="Martinez"/>
+        <property name="age" value="28"/>
+    </bean>
+
+    <bean id="Persona5" class="ec.uce.edu.basebeans.Person">
+        <property name="id" value="5"/>
+        <property name="name" value="Rodriguez"/>
+        <property name="age" value="22"/>
+    </bean>
+
+</beans>
