@@ -1,23 +1,24 @@
 package ec.uce.edu.basebeans.models;
 
 //Anotaciones Beans:
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-
+//@Component
 @Service("hero")
 public class Hero extends Role implements Drawable{
+    //@Value("${hero.name:Walker77}")
+    @Value("Sikario1093")
     private String name;
     private int life;
     private int score;
 
     public Hero(){
-        super (3);
+        super(3);
     }
 
     public Hero(String name, int life, int score) {
-        super(3);
         this.name = name;
         this.life = life;
         this.score = score;
@@ -49,8 +50,6 @@ public class Hero extends Role implements Drawable{
 
     @Override
     public void draw() {
-        System.out.println("Dibujando Hero con puntos: " + this.getCoordX().length+ ", Con nombre: "+ this.name);
+        System.out.println("Dibujando hero con: "+this.getCoordX().length+" puntos con nombre: "+this.name);
     }
-
-
 }

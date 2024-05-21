@@ -4,27 +4,20 @@ import org.springframework.stereotype.Service;
 
 @Service("enemy")
 public class Enemy extends Role implements Drawable{
-    private String name;
     private int life;
-    private int score;
+    private int reward;
+    @Override
+    public void draw() {
+        System.out.println("Dibujando Enemy con: "+this.getCoordX().length+" puntos");
 
+    }
     public Enemy(){
-        super (5);
+        super(5);
     }
 
-    public Enemy(String name, int life, int score) {
-        super(3);
-        this.name = name;
+    public Enemy(int life, int reward) {
         this.life = life;
-        this.score = score;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.reward = reward;
     }
 
     public int getLife() {
@@ -35,18 +28,11 @@ public class Enemy extends Role implements Drawable{
         this.life = life;
     }
 
-    public int getScore() {
-        return score;
+    public int getReward() {
+        return reward;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setReward(int reward) {
+        this.reward = reward;
     }
-
-    @Override
-    public void draw() {
-        System.out.println("Dibujando Enemy con puntos: " + this.getCoordX().length);
-
-    }
-
 }
