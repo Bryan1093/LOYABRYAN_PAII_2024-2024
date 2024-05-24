@@ -1,12 +1,13 @@
 package ec.edu.uce.basicJPA.models;
 
+import ec.edu.uce.basicJPA.repository.PersonRepository;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "person")
 public class Person {
     @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
     private String name;
@@ -19,7 +20,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(long id, String name, String lastname, int age) {
+    public Person(String name, String lastname, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
