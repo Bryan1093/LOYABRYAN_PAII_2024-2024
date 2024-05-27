@@ -1,4 +1,4 @@
-package ec.edu.uce.basicJPA;
+/*package ec.edu.uce.basicJPA;
 
 import ec.edu.uce.basicJPA.models.Person;
 import ec.edu.uce.basicJPA.services.PersonService;
@@ -23,7 +23,7 @@ public class BasicJpaApplication implements CommandLineRunner {
 
 		/*AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 		PersonService personService = ctx.getBean(PersonService.class);
-		personService.save(new Person(1,"Mai",21,"Shiranui"));*/
+		personService.save(new Person(1,"Mai",21,"Shiranui"));
 
 
 	}
@@ -140,4 +140,4 @@ public class BasicJpaApplication implements CommandLineRunner {
 		System.out.println("Saliendo del programa...");
 		System.exit(0);
 	}
-}
+}*/

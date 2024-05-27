@@ -1,4 +1,4 @@
-package ec.edu.uce.basicJPA.models;
+/*package ec.edu.uce.basicJPA.models;
 
 import ec.edu.uce.basicJPA.repository.PersonRepository;
 import jakarta.persistence.*;
@@ -68,4 +68,4 @@ public class Person {
                 ", age=" + age +
                 '}';
     }
-}
+}*/

@@ -1,4 +1,4 @@
-package ec.edu.uce.basicJPA.services;
+/*package ec.edu.uce.basicJPA.services;
 
 import ec.edu.uce.basicJPA.models.Person;
 import ec.edu.uce.basicJPA.repository.PersonRepository;
@@ -14,7 +14,7 @@ public class PersonService {
 
     /*public void save(Person person) {
         repository.save(person);
-    }*/
+    }
 
     public Iterable<Person> getAllPeople() {
         return repository.findAll();
@@ -50,4 +50,4 @@ public class PersonService {
     public void save(Person person) {
         personRepository.save(person);
     }
-}
+}*/
