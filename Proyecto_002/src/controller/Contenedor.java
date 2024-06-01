@@ -55,9 +55,6 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
     private EnemyShipGenerator enemyShipGenerator;
     private Set<EnemyShip> navesConVidaRestadaTotal = new HashSet<>();
     private Timer enemyShootTimer;
-    
-
-    
 
     /**
      * Constructor privado de la clase Juego para asegurar que solo haya una instancia.
@@ -75,7 +72,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
 
         // Posiciones iniciales de las naves enemigas
         for (int i = 0; i < navesEnemigas.length; i++) {
-            navesEnemigas[i] = new EnemyShip(40 + i * 135, 50, 40, 40, Color.RED);
+            navesEnemigas[i] = new EnemyShip(40 + i * (135), 50, 40, 40, Color.RED);
         }
 
         // Posiciones iniciales de las naves enemigas abajo
@@ -84,7 +81,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
         }
 
         // Configurar temporizador para actualizar el juego
-        enemyShootTimer = new Timer(1000 / 60, this); // Llamar al actionPerformed aproximadamente cada 60 veces por segundo
+        enemyShootTimer = new Timer(10000 / 120, this); // Llamar al actionPerformed aproximadamente cada 60 veces por segundo
         enemyShootTimer.start();
 
         setFocusable(true); // Permitir que el panel tenga el foco
@@ -142,14 +139,15 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         actualizar(); // Actualizar el estado del juego en cada iteración del temporizador
     }
-    
+
     public void disparoAutomatico() {
         for (EnemyShip naveEnemiga : navesEnemigas) {
             if (!naveEnemiga.isDisparando()) {
                 naveEnemiga.setDisparando(true);
-                EnemyBullet bala = naveEnemiga.shoot();
-                if (bala != null) {
-                    agregarBalaEnemiga(bala);
+                EnemyBullet balaEnemiga = naveEnemiga.shoot();
+                if (balaEnemiga != null) {
+                    balaEnemiga.setSpeedY(1); // Velocidad hacia abajo
+                    balasEnemigas.add(balaEnemiga); // Agregar la bala a la lista de balas enemigas
                 }
             }
         }
@@ -157,13 +155,15 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
         for (EnemyShip naveEnemiga : navesEnemigasAbajo) {
             if (!naveEnemiga.isDisparando()) {
                 naveEnemiga.setDisparando(true);
-                EnemyBullet bala = naveEnemiga.shoot();
-                if (bala != null) {
-                    agregarBalaEnemiga(bala);
+                EnemyBullet balaEnemiga = naveEnemiga.shoot();
+                if (balaEnemiga != null) {
+                    balaEnemiga.setSpeedY(1); // Velocidad hacia abajo
+                    balasEnemigas.add(balaEnemiga); // Agregar la bala a la lista de balas enemigas
                 }
             }
         }
     }
+
 
 
 
@@ -177,7 +177,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
         }
     }
 
-    public void moverBalasEnemigas() {
+    /*}public void moverBalasEnemigas() {
         // Mover y eliminar balas enemigas (arriba)
         for (EnemyShip naveEnemiga : navesEnemigas) {
             if (naveEnemiga != null) {
@@ -207,11 +207,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
                 }
             }
         }
-    }
-
-
-
-
+    }*/
     /**
      * Método para actualizar el estado del juego en cada iteración del temporizador.
      */
@@ -219,7 +215,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
         naveAliada.moverBalas();
         disparoAutomatico();
         puntaje = ColisionesManager.verificarColisionesYEliminarNaves(naveAliada, navesEnemigas, navesEnemigasAbajo, puntaje);
-        moverBalasEnemigas();
+
 
         // Eliminar naves enemigas nulas (arriba)
         navesEnemigas = Arrays.stream(navesEnemigas)
@@ -238,7 +234,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
                 vida.restarVida(10); // Restar 10 de vida
                 navesConVidaRestadaTotal.add(naveEnemiga);
                 naveEnemiga.setRestadoVida(true);
-                naveEnemiga.moveBullets();
+                naveEnemiga.move();
             }
         }
 
@@ -248,7 +244,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
                 vida.restarVida(10); // Restar 10 de vida
                 navesConVidaRestadaTotal.add(naveEnemiga);
                 naveEnemiga.setRestadoVida(true);
-                naveEnemiga.moveBullets();
+                naveEnemiga.move();
             }
         }
 
@@ -301,10 +297,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
                 bala.draw(g);
             }
         }
-
-        
         //Usuario y Vidas
-        
         g.setColor(Color.WHITE);
         g.drawString("Usuario: " + usuario.getNombre(), 10, 20);
         g.drawString("Vida: " + vida.getCantidad(), 10, 40);
@@ -386,6 +379,7 @@ public class Contenedor extends JPanel implements ActionListener, KeyListener {
     public EnemyShip[] getNavesEnemigasAbajo() {
         return navesEnemigasAbajo;
     }
+
 
 
 }

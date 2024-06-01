@@ -12,7 +12,8 @@ import controller.Contenedor;
 /**
  * Clase principal que inicia la aplicación del juego Galaga chafa.
  */
-public class MainGalaga {
+public class
+MainGalaga {
     public static void main(String[] args) {
         // Crear una nueva ventana
         JFrame ventana = new JFrame("Galaga chafa");

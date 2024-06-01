@@ -58,12 +58,40 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
         timer.start(); // Iniciar el temporizador
     }
 
+    public int[] rotateXRight(int[] xPoints, int[] yPoints, int centerX, int centerY) {
+        int[] rotatedX = new int[xPoints.length];
+        for (int i = 0; i < xPoints.length; i++) {
+            rotatedX[i] = centerX + (yPoints[i] - centerY);
+        }
+        return rotatedX;
+    }
+
+    public int[] rotateYRight(int[] xPoints, int[] yPoints, int centerX, int centerY) {
+        int[] rotatedY = new int[yPoints.length];
+        for (int i = 0; i < yPoints.length; i++) {
+            rotatedY[i] = centerY - (xPoints[i] - centerX);
+        }
+        return rotatedY;
+    }
+
+
+
     @Override
     public void draw(Graphics g) {
-        // Dibujar la nave enemiga como un polígono relleno
-        int[] xPoints = {x, x + width / 2, x + width, x + width / 2};
-        int[] yPoints = {y + high, y, y + high, y + high / 2};
-        Polygon nave = new Polygon(xPoints, yPoints, 4);
+        // Coordenadas originales de los puntos de la figura
+        int[] xPoints = {x, x + width, x + width, x, x + width / 2};
+        int[] yPoints = {y, y, y + high, y + high, y + high / 2};
+
+        // Calcular el centro de la figura para la rotación
+        int centerX = x + width / 2;
+        int centerY = y + high / 2;
+
+        // Rotar los puntos 90 grados a la derecha
+        int[] rotatedXPoints = rotateXRight(xPoints, yPoints, centerX, centerY);
+        int[] rotatedYPoints = rotateYRight(xPoints, yPoints, centerX, centerY);
+
+        // Crear el polígono con las coordenadas rotadas
+        Polygon nave = new Polygon(rotatedXPoints, rotatedYPoints, xPoints.length);
         g.setColor(Color.GREEN);
         g.fillPolygon(nave);
 
@@ -97,7 +125,7 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
 
         // Mover las balas enemigas
         for (EnemyBullet bullet : bullets) {
-            bullet.mover();
+            bullet.moverAbajo();
         }
 
         // Eliminar balas que salieron de la pantalla
@@ -138,21 +166,9 @@ public class EnemyShip implements IDrawable, IMove, IDead, IShoot {
 
         // Crear una nueva bala enemiga y agregarla a la lista de balas
         EnemyBullet bullet = new EnemyBullet(xBullet, yBullet, 5, 10, Color.WHITE);
-        bullet.setSpeedY(-2); // Velocidad hacia abajo
+        bullet.setSpeedY(1); // Velocidad hacia abajo
         bullets.add(bullet);
 		return bullet;
-    }
-    
-    public void moveBullets() {
-        Iterator<EnemyBullet> iter = bullets.iterator();
-        while (iter.hasNext()) {
-            EnemyBullet bullet = iter.next();
-            bullet.mover(); // Movemos la bala
-            // Si la bala sale de la pantalla, la eliminamos
-            if (bullet.getY() > Contenedor.getInstance().getHeight()) {
-                iter.remove();
-            }
-        }
     }
 
 

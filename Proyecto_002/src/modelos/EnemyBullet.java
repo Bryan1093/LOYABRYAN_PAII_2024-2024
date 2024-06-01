@@ -27,10 +27,6 @@ public class EnemyBullet implements IDrawable {
         this.color = color;
     }
     
-    public void mover() { 
-        y += speedY; // Mueve la bala hacia abajo
-    }
-    
     public int getY() {
         return y;
     }
@@ -61,9 +57,9 @@ public class EnemyBullet implements IDrawable {
     public void setSpeedY(int speedY) {
         this.speedY = speedY;
     }
-    
+
     public void moverAbajo() {
-        y += speedY; // Move the bullet downwards
+        y += 10; // Move the bullet downwards
     }
 
 }
